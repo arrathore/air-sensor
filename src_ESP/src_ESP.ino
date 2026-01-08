@@ -8,8 +8,8 @@
 // broker settings
 const char* mqtt_server = "192.168.1.149";
 const int   mqtt_port   = 1883;
-const char* pub_topic   = "esp32c6/test_data";
-const char* sub_topic   = "esp32c6/echo";
+const char* pub_topic   = "sensor/test_data";
+const char* sub_topic   = "sensor/echo";
 
 WiFiClient espClient;
 PubSubClient client(espClient);
@@ -109,8 +109,8 @@ void loop() {
     //Serial.println("generating data");
     //int data = random(0, 1000);
     int data = sensor_getTestData();
-    char payload[16];
-    snprintf(payload, sizeof(payload), "{\"data\":%d}", data);
+    char payload[32];
+    snprintf(payload, sizeof(payload), "{\"name\":\"indoor-1\", \"data\":%d}", data);
     Serial.print("sending: ");
     Serial.println(payload);
 
