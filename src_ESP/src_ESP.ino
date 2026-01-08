@@ -3,6 +3,8 @@
 
 #include <PubSubClient.h>
 
+#include "sensor.h"
+
 // broker settings
 const char* mqtt_server = "192.168.1.149";
 const int   mqtt_port   = 1883;
@@ -89,7 +91,8 @@ void setup() {
   client.setServer(mqtt_server, mqtt_port);
   client.setCallback(mqttCallback);
 
-  randomSeed(esp_random()); // for testing only
+  //randomSeed(esp_random()); // for testing only
+  sensor_Init();
 }
 
 void loop() {
@@ -104,7 +107,8 @@ void loop() {
     
     // generate random dummy data for testing
     //Serial.println("generating data");
-    int data = random(0, 1000);
+    //int data = random(0, 1000);
+    int data = sensor_getTestData();
     char payload[16];
     snprintf(payload, sizeof(payload), "{\"data\":%d}", data);
     Serial.print("sending: ");
