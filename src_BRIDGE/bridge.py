@@ -12,7 +12,7 @@ MQTT_BROKER = "localhost"
 MQTT_PORT = 1883
 MQTT_TOPICS = [("sensor/test_data", 0)] # (topic, qos)
 
-BACKEND_URL = "http://localhost:3000/ingest"
+BACKEND_URL = "http://127.0.0.1:3000/ingest"
 
 # fifo for data
 msg_queue = queue.Queue(maxsize=1000)
@@ -63,7 +63,7 @@ def backend_sender():
                 msg_queue.put(msg)
                 time.sleep(1)
             else:
-                print(f"success!")
+                print(f"200 OK")
         except requests.exceptions.RequestException as e:
             print(f"failed to send to backend: {e}, requeueing")
             msg_queue.put(msg)
