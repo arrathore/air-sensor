@@ -2,6 +2,13 @@ import Fastify from 'fastify';
 import fs from 'fs';Fastify
 const fastify = Fastify({ logger: true});
 
+import cors from '@fastify/cors';
+
+await fastify.register(cors, {
+  origin: '*'
+});
+
+
 // temp 'database'
 const LOG_FILE = './data.log';
 
