@@ -63,10 +63,10 @@ The project is divided into two main parts:
 - Backend Services:
   - Node.js
   - REST API
-  - MongoDB (future)
+  - Future: MongoDB
 - Web Frontend:
   - HTML/CSS UI
-  - React (future)
+  - Future: React
 
 ## Future Expansions
 
